@@ -1,0 +1,11 @@
+{
+  // "mongoURI":"mongodb+srv://salci:salci@cluster1.fhr69.mongodb.net/dbname?retryWrites=true&w=majority",
+
+  "mongoURI2":"mongodb+srv://salci:salci@cluster1.fbktb.mongodb.net/test?retryWrites=true&w=majority",
+
+ "mongoURI": "mongodb+srv://salci:salci@contactkeeper.yuyix.mongodb.net/testDb?retryWrites=true&w=majority",
+
+ "jwtSecret": "secret"
+
+}
+
