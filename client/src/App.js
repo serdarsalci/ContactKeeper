@@ -7,6 +7,7 @@ import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 import AuthState from './context/auth/AuthState';
 import ContactState from './context/contact/ContactState';
@@ -14,9 +15,11 @@ import AlertState from './context/alert/AlertState';
 
 import setAuthToken from './utils/setAuthToken'
 
-// if (localStorage.token) {
-//   setAuthToken(localStorage.token);
-// }
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+
 
 
 const App = () => {
@@ -30,7 +33,7 @@ const App = () => {
               <div className="container">
                 <Alerts />
                 <Switch>
-                  <Route exact path='/' component={Home} />
+                  <PrivateRoute exact path='/' component={Home} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />

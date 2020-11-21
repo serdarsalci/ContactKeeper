@@ -20,20 +20,24 @@ router.post('/',
     check('email', 'Please include valid email')
       .isEmail(),
     check('password', 'Please enter a password with 6 or more characters')
-      .isLength({ min: 6 })
+      .isLength({ min: 2 })
   ],
   async (req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() })
+      console.log('error empty degil')
     }
-    const { name, email, password } = req.body;
-    try {
 
+    const { name, email, password } = req.body;
+
+    try {
       let user = await User.findOne({ email: email });
       console.log(user);
+
       if (user) {
-        return res.status(400).json({ msg: 'User already exists!', user });
+
+        return res.status(400).json({ msg: 'User already exists!' });
       }
 
       user = new User({
@@ -44,7 +48,13 @@ router.post('/',
 
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
-      await user.save();
+
+      try {
+        await user.save();
+      } catch (error) {
+        console.log('user.save de takildi')
+      }
+
 
       const payload = {
         user: {

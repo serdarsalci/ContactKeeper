@@ -33,15 +33,15 @@ export const Register = props => {
 
   const { name, email, password, password2 } = user;
 
-  const onChange = e => setUser({
-    ...user, [e.target.name]: e.target.value
-  });
+
+  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+
 
   const onSubmit = e => {
     e.preventDefault();
     console.log('on submit called')
     if (name === '' || email === '' || password === '') {
-      setAlert('Please enter all fields', 'warning')
+      setAlert('Please enter all fields', 'danger')
     } else if (password !== password2) {
       setAlert('Passwords do not match', 'danger')
     } else {
@@ -61,7 +61,7 @@ export const Register = props => {
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" name='name' value={name} onChange={onChange} required />
+          <input type="text" name='name' value={name} onChange={onChange} />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email Address</label>
@@ -70,7 +70,7 @@ export const Register = props => {
             name='email'
             value={email}
             onChange={onChange}
-            required />
+          />
         </div>
 
         <div className="form-group">
@@ -80,8 +80,8 @@ export const Register = props => {
             name='password'
             value={password}
             onChange={onChange}
-            minLength='2'
-            required />
+            minLength='4'
+          />
         </div>
 
         <div className="form-group">
@@ -91,8 +91,8 @@ export const Register = props => {
             name='password2'
             value={password2}
             onChange={onChange}
-            minLength='2'
-            required />
+            minLength='4'
+          />
         </div>
         <input type="submit" value="Register" className='btn btn-primary btn-block' />
 

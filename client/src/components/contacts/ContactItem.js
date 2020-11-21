@@ -9,21 +9,14 @@ export const ContactItem = ({ contact }) => {
 
   const { deleteContact, setCurrent, clearCurrent, current } = contactContext;
 
-  const { id, name, email, phone, type } = contact;
+  const { _id, name, email, phone, type } = contact;
 
   const onDelete = () => {
-
-    // if (id === current.id) {
-    //   clearCurrent();
-    // }
-    clearCurrent();
-    deleteContact(id);
+    deleteContact(_id);
+    // clearCurrent();
   }
 
-  // if (contact.length === 0) {
-  //   return (<div>no matching contanct</div>)
 
-  // }
 
   return (
     <div className="card bg-light">

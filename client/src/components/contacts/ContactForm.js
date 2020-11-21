@@ -78,7 +78,7 @@ export const ContactForm = () => {
       />
       <h5>Contact Type</h5>
       <input onChange={onChange} type='radio' name='type' value='personal'
-        checked={type === 'personal'} /> Personal{' '}
+        checked={type === 'personal'} /> Personal{'  '}
       <input onChange={onChange} type='radio' name='type' value='professional'
         checked={type === 'professional'} /> Professional{' '}
 
